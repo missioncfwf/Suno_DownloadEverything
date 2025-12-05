@@ -77,6 +77,7 @@ def extract_private_song_info(token_string, proxies_list=None):
             uuid, title, audio_url, image_url = clip.get("id"), clip.get("title"), clip.get("audio_url"), clip.get("image_url")
             if (uuid and title and audio_url) and uuid not in song_info:
                 song_info[uuid] = {"title": title, "audio_url": audio_url, "image_url": image_url, "display_name": clip.get("display_name")}
+                song_info[uuid] = {"title": title, "audio_url": audio_url, "image_url": image_url, "display_name": clip.get("display_name"), "lyrics": clip.get("lyrics"), "style_prompt": clip.get("style_prompt")}
         page += 1
         time.sleep(5)
     return song_info
@@ -149,4 +150,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
