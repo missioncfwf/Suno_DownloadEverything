@@ -138,6 +138,14 @@ def main():
                 print(f"  -> Embedding thumbnail...")
                 embed_metadata(saved_path, image_url=obj["image_url"], token=args.token, artist=obj.get("display_name"), title=title)
             
+            # Save lyrics if present
+            if obj.get("lyrics"): 
+                open(os.path.join(args.directory, sanitize_filename(title)+" - Lyrics.txt"),"w",encoding="utf-8").write(obj["lyrics"])
+            if obj.get("style_prompt"): open(os.path.join(args.directory, sanitize_filename(title)+" - Prompt.txt"),"w",encoding="utf-8").write(obj["style_prompt"])
+
+
+            
+            
             # Let the user know if a new version was created
             if os.path.basename(saved_path) != os.path.basename(out_path):
                 print(f"{Fore.YELLOW}  -> Saved as new version: {os.path.basename(saved_path)}")
@@ -152,3 +160,4 @@ def main():
 if __name__ == "__main__":
 
     main()
+
