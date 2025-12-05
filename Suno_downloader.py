@@ -142,9 +142,6 @@ def main():
             if obj.get("lyrics"): 
                 open(os.path.join(args.directory, sanitize_filename(title)+" - Lyrics.txt"),"w",encoding="utf-8").write(obj["lyrics"])
             if obj.get("style_prompt"): open(os.path.join(args.directory, sanitize_filename(title)+" - Prompt.txt"),"w",encoding="utf-8").write(obj["style_prompt"])
-
-
-            
             
             # Let the user know if a new version was created
             if os.path.basename(saved_path) != os.path.basename(out_path):
